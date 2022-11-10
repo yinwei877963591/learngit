@@ -25,9 +25,9 @@ public class UserController {
 
     //新增和修改
     @PostMapping
-    public Integer save(@RequestBody User user) {
+    public boolean save(@RequestBody User user) {
         //新增或更新
-        return userService.save(user);
+        return userService.saveUser(user);
     }
 
     //查询所有数据
