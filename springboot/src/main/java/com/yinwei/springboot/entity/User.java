@@ -18,6 +18,6 @@ public class User {
     private String email;
     private String phone;
     private String address;
-    @TableField(value = "avatar_url") //指定数据库别名
+    @TableField(value = "avatar_url") //指定数据库字段别名
     private String avatar;
 }
