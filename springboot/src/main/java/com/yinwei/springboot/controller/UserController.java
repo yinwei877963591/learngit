@@ -69,9 +69,18 @@ public class UserController {
                                 @RequestParam(defaultValue = "") String address){
         IPage<User> page = new Page<>(pageNum, pageSize);
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.like("username", username);
-        queryWrapper.like("nickname", nickname);
-        queryWrapper.like("address", address);
+        if (!"".equals(username)){
+            queryWrapper.like("username",username);
+        }
+        if (!"".equals(nickname)){
+            queryWrapper.like("nickname",nickname);
+        }
+        if (!"".equals(address)){
+            queryWrapper.like("address",address);
+        }
+//        queryWrapper.like("username", username);
+//        queryWrapper.like("nickname", nickname);
+//        queryWrapper.like("address", address);
         return userService.page(page, queryWrapper);
     }
 }
