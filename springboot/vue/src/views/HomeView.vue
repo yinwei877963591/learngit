@@ -155,13 +155,18 @@ export default {
         this.logTextShow = true
       }
     },
-    load(){
-      fetch("http://localhost:9090/user/page?pageNum="+this.pageNum+"&pageSize="+this.pageSize+"&username="+this.username)
-          .then(res => res.json()).then(res => {
-        console.log(res)
-        this.tableData = res.data
-        this.total = res.total
-      })
+    load() {
+        request.get("http://localhost:9090/user/page", {
+              params:{
+                pageNum: this.pageNum,
+                pageSize: this.pageSize,
+                username: this.username
+              }
+            }).then(res => {
+          console.log(res)
+          this.tableData = res.records
+          this.total = res.total
+        })
     },
     handleSizeChange(pageSize){
       console.log(pageSize)
